@@ -10,6 +10,7 @@
     {
         [Header("References")]
         [SerializeField] private InputActionReference m_ClickAction = null;
+        [SerializeField] private InputActionReference m_ReleaseAction = null;
         [SerializeField] [HasComponentOf(typeof(IPicker))] private Transform m_ItemPickerReference = null;
         
         [Header("Input")]
@@ -27,6 +28,14 @@
         {
             if (m_ClickAction.action.WasPressedThisFrame())
                 TryPickItem();
+            
+            if (m_ReleaseAction.action.WasPressedThisFrame())
+                TryReleaseItem();
+        }
+
+        private void TryReleaseItem()
+        {
+            m_ItemPicker.ReleaseItem();
         }
 
         private void TryPickItem()

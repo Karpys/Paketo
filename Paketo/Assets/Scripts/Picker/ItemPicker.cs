@@ -4,14 +4,20 @@
 
     public class ItemPicker : MonoBehaviour, IPicker
     {
+        [SerializeField] private Transform m_Root = null;
+        public Transform Root => m_Root;
+
+        private IPickable m_CurrentPickable = null;
+
         public void PickItem(IPickable pickable)
         {
             pickable.Pick(this);
+            m_CurrentPickable = pickable;
         }
 
-        public void ReleaseItem(IPickable pickable)
+        public void ReleaseItem()
         {
-            pickable.Release(this);
+            m_CurrentPickable.Release(this);
         }
     }
 }
