@@ -1,7 +1,6 @@
 namespace KarpysDev.Scripts.Paketo
 {
     using UnityEngine;
-    using UnityEngine.InputSystem;
 
     public class CharacterMovement : MonoBehaviour
     {
@@ -9,13 +8,11 @@ namespace KarpysDev.Scripts.Paketo
         [SerializeField] private CharacterInput m_CharacterInput = null;
         [SerializeField] private float m_MoveSpeed = 1.0f;
 
-        private void Start()
-        {
-        }
-
         private void Update()
         {
-            m_CharacterController.SimpleMove(new Vector3(m_CharacterInput.Direction.x * m_MoveSpeed,0,m_CharacterInput.Direction.y * m_MoveSpeed));
+            Vector3 moveDirection = (transform.right * m_CharacterInput.Direction.x) +
+                                    (transform.forward * m_CharacterInput.Direction.y);
+            m_CharacterController.SimpleMove(moveDirection * m_MoveSpeed);
         }
     }
 }
