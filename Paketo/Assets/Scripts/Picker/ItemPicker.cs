@@ -9,6 +9,8 @@
 
         private IPickable m_CurrentPickable = null;
 
+        public IPickable CurrentPickable => m_CurrentPickable;
+
         public void PickItem(IPickable pickable)
         {
             pickable.Pick(this);

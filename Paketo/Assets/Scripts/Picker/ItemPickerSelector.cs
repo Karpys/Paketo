@@ -19,6 +19,8 @@
         [SerializeField] private LayerMask m_LayerSelection;
 
         private IPicker m_ItemPicker = null;
+
+        public IPicker CurrentPicker => m_ItemPicker;
         private void Awake()
         {
             m_ItemPicker = m_ItemPickerReference.GetComponent<IPicker>();
