@@ -1,6 +1,5 @@
 ﻿namespace KarpysDev.Scripts.Paketo
 {
-    using System;
     using KarpysUtils.TweenCustom;
     using UnityEngine;
 
