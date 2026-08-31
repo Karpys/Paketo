@@ -20,6 +20,12 @@
         public void ReleaseItem()
         {
             m_CurrentPickable.Release(this);
+            ClearItem();
+        }
+
+        public void ClearItem()
+        {
+            m_CurrentPickable = null;
         }
     }
 }

@@ -20,6 +20,8 @@
         }
 
         public Vector3 Direction => m_Direction;
+        
+        
         private void Update()
         {
             Vector2 direction = m_MoveAction.action.ReadValue<Vector2>();

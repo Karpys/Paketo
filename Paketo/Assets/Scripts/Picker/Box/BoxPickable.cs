@@ -42,5 +42,11 @@
             m_Rigidbody.isKinematic = false;
             m_InPick = false;
         }
+
+        public void Place(IDeliverStation station)
+        {
+            m_Rigidbody.isKinematic = false;
+            m_InPick = false;
+        }
     }
 }

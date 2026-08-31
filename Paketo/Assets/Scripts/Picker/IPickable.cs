@@ -7,5 +7,6 @@
         public Transform Root { get; }
         public void Pick(IPicker picker);
         public void Release(IPicker picker);
+        public void Place(IDeliverStation deliverStation);
     }
 }
