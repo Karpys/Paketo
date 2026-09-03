@@ -1,6 +1,5 @@
 ﻿namespace KarpysDev.Scripts.Paketo
 {
-    using System;
     using UnityEngine;
 
     public class BoxOutline : MonoBehaviour, ISelectable

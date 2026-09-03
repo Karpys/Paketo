@@ -41,6 +41,7 @@
             transform.DoKill();
             m_Rigidbody.isKinematic = false;
             m_InPick = false;
+            OnPick?.Invoke();
         }
 
         public void Place(IDeliverStation station)

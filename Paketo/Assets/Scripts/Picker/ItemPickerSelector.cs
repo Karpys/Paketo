@@ -1,5 +1,6 @@
 ﻿namespace KarpysDev.Scripts.Paketo
 {
+    using System;
     using KarpysUtils;
     using KarpysUtils.InterfaceUtils;
     using UnityEngine;
@@ -19,6 +20,14 @@
         [SerializeField] private LayerMask m_DeliverLayer;
 
         private IPicker m_ItemPicker = null;
+        private Action<bool> A_OnItemPick;
+
+        public Action<bool> OnItemPick
+        {
+            get => A_OnItemPick;
+            set => A_OnItemPick = value;
+        }
+
         private void Awake()
         {
             m_ItemPicker = m_ItemPickerReference.GetComponent<IPicker>();
@@ -59,12 +68,14 @@
                 m_ItemPicker.CurrentPickable.Place(deliverStation);
                 deliverStation.DeliverPickable(m_ItemPicker.CurrentPickable);
                 m_ItemPicker.ClearItem();
+                A_OnItemPick.Invoke(false);
             }
         }
 
         private void TryReleaseItem()
         {
             m_ItemPicker.ReleaseItem();
+            A_OnItemPick.Invoke(false);
         }
 
         private void TryPickItem()
@@ -81,6 +92,7 @@
                 if(pickable == null)
                     return;
                 
+                A_OnItemPick.Invoke(true);
                 m_ItemPicker.PickItem(pickable);
             }
         }
